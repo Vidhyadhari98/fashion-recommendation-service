@@ -1,5 +1,3 @@
-// src/main/java/com/example/fashion/service/DemographicService.java
-
 package com.example.fashion.service;
 
 import com.example.fashion.model.User;

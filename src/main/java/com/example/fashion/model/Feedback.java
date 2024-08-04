@@ -1,5 +1,3 @@
-// src/main/java/com/example/fashion/model/Feedback.java
-
 package com.example.fashion.model;
 
 public class Feedback {

@@ -1,5 +1,3 @@
-// src/main/java/com/example/fashion/FashionRecommendationApplication.java
-
 package com.example.fashion;
 
 import org.springframework.boot.SpringApplication;

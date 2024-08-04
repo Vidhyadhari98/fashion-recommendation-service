@@ -1,5 +1,3 @@
-// src/main/java/com/example/fashion/service/PurchaseHistoryService.java
-
 package com.example.fashion.service;
 
 import com.example.fashion.model.PurchaseHistory;
@@ -23,6 +21,4 @@ public class PurchaseHistoryService {
         PurchaseHistory history = historyDatabase.get(userId);
         return history != null ? history.getPurchasedItemIds() : new ArrayList<>();
     }
-
-    // Optionally add methods to update purchase history
 }

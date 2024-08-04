@@ -1,51 +1,50 @@
 package com.example.fashion;
 
-import com.example.fashion.model.UserPreferences;
-import com.example.fashion.service.RecommendationService;
-import com.example.fashion.service.InventoryService;
-import com.example.fashion.service.PurchaseHistoryService;
-import com.example.fashion.service.DemographicService;
 import com.example.fashion.controller.RecommendationController;
 import com.example.fashion.model.Outfit;
+import com.example.fashion.model.UserPreferences;
+import com.example.fashion.service.RecommendationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.when;
 
-@SpringBootTest
 public class RecommendationControllerTest {
 
+    @Mock
     private RecommendationService recommendationService;
+
+    @InjectMocks
     private RecommendationController recommendationController;
 
     @BeforeEach
     public void setUp() {
-        // Initialize services and controller
-        InventoryService inventoryService = new InventoryService();
-        PurchaseHistoryService purchaseHistoryService = new PurchaseHistoryService();
-        DemographicService demographicService = new DemographicService();
-
-        recommendationService = new RecommendationService(inventoryService, purchaseHistoryService, demographicService);
-        recommendationController = new RecommendationController(recommendationService);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
     public void testGetRecommendations() {
         String userId = "user1";
         UserPreferences preferences = new UserPreferences("Christmas", "Casual", 300.0);
+        List<Outfit> expectedOutfits = Arrays.asList(
+                new Outfit("1", "Jacket", 150.0),
+                new Outfit("2", "Boots", 100.0)
+        );
+
+        // Mock the recommendationService to return expectedOutfits
+        when(recommendationService.recommendOutfits(preferences)).thenReturn(expectedOutfits);
 
         ResponseEntity<List<Outfit>> response = recommendationController.getRecommendations(userId, preferences);
 
-        // Assertions
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertNotNull(response.getBody());
-        assertFalse(response.getBody().isEmpty());
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals(expectedOutfits, response.getBody());
     }
 }
