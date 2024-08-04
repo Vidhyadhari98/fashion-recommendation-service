@@ -1,7 +1,7 @@
 # H&M Assesment - Vidhyadhari Gurrala
 H&amp;M Java Developer Assesment - FASHION RECOMMENDATION SERVICE
 
-- [Case Study Syatem Overview Report Pdf](System_Overview.pdf)
+- [Case Study System Overview Report Pdf](System_Overview.pdf)
 
 Postman Url: http://localhost:8080/api/recommendations/user1
 
