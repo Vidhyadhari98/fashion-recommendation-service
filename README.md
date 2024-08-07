@@ -1,5 +1,5 @@
-# H&M Assesment - Vidhyadhari Gurrala
-H&amp;M Java Developer Assesment - FASHION RECOMMENDATION SERVICE
+# H&M Backend Service - Vidhyadhari Gurrala
+H&amp;M Java Developer  - FASHION RECOMMENDATION SERVICE
 
 - [Case Study System Overview Report Pdf](System_Overview.pdf)
 
